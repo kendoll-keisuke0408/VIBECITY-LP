@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJ K`Oberia - VIBECity RECORD</title>
+    <meta name="description" content="AIとリアルの共鳴が、音楽の未来を創る。VIBECity RECORDの公式ページ。DJ K`Oberiaやhirothugの最新リリース情報をチェック。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Roboto+Mono:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #101010; /* Darker background */
+            --card-bg-color: #1a1a1a;
+            --primary-text-color: #E0E0E0;
+            --secondary-text-color: #a0a0a0;
+            --accent-color-1: #00ffff; /* Cyan */
+            --accent-color-2: #ff00ff; /* Magenta */
+            --border-color: #3a3a3a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--primary-text-color);
+            overflow-x: hidden;
+            padding-top: 70px; /* Adjust based on header height */
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--accent-color-1);
+            text-shadow: 0 0 20px var(--accent-color-1), 0 0 30px var(--accent-color-1), 0 0 40px var(--accent-color-1); /* Further emphasized text shadow */
+        }
+
+        /* --- Header --- */
+        .main-header {
+            background-color: rgba(16, 16, 16, 0.9); /* Semi-transparent dark background */
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 100; /* Ensure it's above other content */
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between; /* Space between logo and nav */
+            align-items: center;
+        }
+
+        .header-logo img {
+            height: 50px; /* Adjust logo size */
+            width: auto;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 30px; /* Space between links */
+        }
+
+        .nav-links a {
+            color: var(--primary-text-color);
+            text-decoration: none;
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color-1); /* Cyan on hover */
+            text-shadow: 0 0 5px var(--accent-color-1), 0 0 10px var(--accent-color-1);
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            background-image: url('6434b4e6-a3f5-41ca-87bf-9e6a8451dd6c.png'); /* Changed background image */
+            background-size: cover; /* Cover the entire section */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Do not repeat the image */
+            background-color: rgba(0, 0, 0, 0.9); /* Adjusted transparency for the background image */
+            z-index: 0; /* Behind content */
+        }
+
+        .hero-content { /* New wrapper for hero text to ensure z-index */
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            font-family: 'Roboto Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        .hero-title {
+            font-family: 'Bebas Neue', cursive; /* Street-style font */
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: #fff; /* Ensure white for neon effect */
+        }
+
+        .hero-label {
+            font-size: 6rem; /* Increased font size */
+            font-weight: 700;
+            color: var(--accent-color-1); /* Cyan for label */
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px var(--accent-color-1), 0 0 20px var(--accent-color-1);
+            animation: neon-glow 1.5s infinite alternate; /* Added neon glow animation */
+        }
+
+        @keyframes neon-glow {
+            from { text-shadow: 0 0 10px var(--accent-color-1), 0 0 20px var(--accent-color-1); }
+            to { text-shadow: 0 0 20px var(--accent-color-1), 0 0 30px var(--accent-color-1), 0 0 40px var(--accent-color-1); }
+        }
+
+        .hero-catchphrase {
+            font-size: 1.2rem;
+            font-weight: 400;
+            max-width: 600px;
+            line-height: 1.5;
+            color: #FFFFFF; /* Changed to pure white for better contrast */
+            text-align: center;
+            margin: 0 auto; /* Added for horizontal centering of the block element */
+            animation: catchphrase-fade-in 2s ease-out forwards; /* Added subtle fade-in animation */
+            opacity: 0; /* Start invisible */
+            animation-delay: 0.5s; /* Delay after label animation */
+            text-shadow: 0 0 5px rgba(255,255,255,0.5), 0 0 10px rgba(255,255,255,0.3); /* Added subtle text shadow */
+        }
+
+        @keyframes catchphrase-fade-in {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        #bgm-toggle-btn {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--accent-color-1);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            transition: background-color 0.3s;
+        }
+        #bgm-toggle-btn:hover {
+            background: rgba(0, 255, 255, 0.2);
+        }
+        #bgm-toggle-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--accent-color-1);
+        }
+
+        /* --- New Releases Section --- */
+        .new-releases-section {
+            background-color: var(--card-bg-color);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .new-releases-title {
+            color: var(--accent-color-2);
+            text-shadow: 0 0 10px var(--accent-color-2), 0 0 20px var(--accent-color-2);
+        }
+
+        .new-release-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            background-color: var(--bg-color);
+            border: 2px solid var(--accent-color-1);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .new-release-jacket {
+            width: 250px;
+            height: 250px;
+            position: relative;
+            border: 2px solid var(--accent-color-2);
+            flex-shrink: 0;
+            overflow: hidden; /* Ensure image stays within bounds */
+        }
+
+        .new-release-jacket img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensure image covers the entire area */
+        }
+
+        .new-release-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #ff00ff; /* Magenta */
+            color: #fff;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 4px;
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); opacity: 1; }
+            to { transform: scale(1.05); opacity: 0.8; }
+        }
+
+        .new-release-artist {
+            font-size: 1.1rem;
+            color: var(--secondary-text-color);
+            margin-bottom: 5px;
+        }
+
+        .new-release-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2.5rem;
+            color: var(--primary-text-color);
+            margin-bottom: 15px;
+        }
+
+        .new-release-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--secondary-text-color);
+            margin-bottom: 30px;
+        }
+
+        .listen-now-button {
+            display: inline-block;
+            background-color: var(--accent-color-2);
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: 2px solid var(--accent-color-2);
+        }
+
+        .listen-now-button:hover {
+            background-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 0, 255, 0.4);
+        }
+
+        .listen-on-suno-button {
+            display: inline-block;
+            background-color: var(--accent-color-1); /* Cyan */
+            color: var(--bg-color);
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            margin-top: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: 2px solid var(--accent-color-1);
+        }
+
+        .listen-on-suno-button:hover {
+            background-color: transparent;
+            color: var(--accent-color-1);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
+        }
+
+        @media (min-width: 768px) {
+            .new-release-card {
+                flex-direction: row;
+                text-align: left;
+            }
+            .new-release-info {
+                text-align: left;
+            }
+        }
+
+        /* --- About Section --- */
+        #about {
+            background-image: url('ChatGPT Image 2025年6月29日 14_10_03.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: rgba(16, 16, 16, 0.7);
+            position: relative;
+            z-index: 0;
+            padding-top: 40px;
+        }
+
+        #about .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-content {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            margin-top: 40px;
+            line-height: 1.8;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 50px 40px;
+            border-radius: 8px;
+            color: #FFFFFF;
+        }
+
+        /* --- VIBE CITY Section --- */
+        #vibe-city {
+            background-image: url('f7c53e3e-a2bd-4216-809d-5ce362b7d680.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: rgba(16, 16, 16, 0.7);
+            position: relative;
+            z-index: 0;
+        }
+
+        #vibe-city .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- Artists Section --- */
+        .artist-card {
+            background-color: var(--card-bg-color);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 8px;
+            color: var(--secondary-text-color);
+            margin-bottom: 20px;
+        }
+
+        .artist-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Bebas Neue', cursive;
+            font-size: 4rem;
+            color: var(--bg-color);
+            margin: 0 auto 20px;
+            overflow: hidden;
+        }
+
+        .artist-name {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            color: var(--primary-text-color);
+            margin-bottom: 15px;
+        }
+
+        .artist-bio {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .artist-hashtags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .hashtag {
+            background-color: var(--accent-color-2);
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* --- Music Section --- */
+        .music-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .song-card {
+            background-color: var(--card-bg-color);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .song-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 255, 255, 0.2);
+        }
+
+        .jacket-placeholder {
+            width: 100%;
+            padding-bottom: 100%; /* 1:1 Aspect Ratio */
+            position: relative;
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .jacket-placeholder img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+        
+        .song-card:hover .jacket-placeholder img {
+            opacity: 0.3;
+        }
+
+        .jacket-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .song-card:hover .jacket-overlay {
+            opacity: 1;
+        }
+
+        .jacket-overlay .listen-on-suno-button,
+        .jacket-overlay .play-button {
+            margin: 5px;
+            transform: translateY(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .song-card:hover .jacket-overlay .listen-on-suno-button,
+        .song-card:hover .jacket-overlay .play-button {
+            transform: translateY(0);
+        }
+        
+        .play-button {
+            background-color: var(--accent-color-2);
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 2px solid var(--accent-color-2);
+            cursor: pointer;
+        }
+
+        .play-button:hover {
+            background-color: transparent;
+        }
+
+        .song-tag-overlay {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--accent-color-2);
+            color: #fff;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 4px;
+            z-index: 1;
+        }
+
+        .jacket-placeholder::before {
+            content: 'VC';
+            font-weight: bold;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            color: #555;
+            z-index: 0;
+        }
+
+        .song-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .song-artist {
+            font-size: 0.9rem;
+            color: var(--secondary-text-color);
+            margin-bottom: 5px;
+        }
+
+        .song-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.5rem;
+            color: var(--primary-text-color);
+            margin-bottom: 10px;
+        }
+
+        .song-tag {
+            background-color: var(--accent-color-1);
+            color: var(--bg-color);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .song-tag.alt {
+            background-color: var(--accent-color-2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #101010;
+            color: var(--secondary-text-color);
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 80px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-contact,
+        .footer-social {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .footer-credits {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            .hero-label {
+                font-size: 1.4rem;
+            }
+            .hero-catchphrase {
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 2.5rem;
+            }
+            .new-release-card {
+                padding: 20px;
+            }
+            .new-release-jacket {
+                width: 200px;
+                height: 200px;
+            }
+            .new-release-title {
+                font-size: 2rem;
+            }
+            .artist-photo {
+                width: 120px;
+                height: 120px;
+                font-size: 3rem;
+            }
+            .artist-name {
+                font-size: 1.8rem;
+            }
+            .song-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="header-logo">
+                <a href="#hero"><img src="ChatGPT Image 2025年6月29日 17_26_15.png" alt="VIBECity RECORD Logo"></a>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#hero">TOP</a></li>
+                    <li><a href="#new-releases">NEW RELEASES</a></li>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#vibe-city">VIBE CITY</a></li>
+                    <li><a href="#artists">ARTISTS</a></li>
+                    <li><a href="#music">MUSIC</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <p class="hero-label">VIBECity RECORD</p>
+            <p class="hero-catchphrase">
+                <span style="color: var(--accent-color-2);">AIとリアルの共鳴が、音楽の未来を創る。</span><br>
+                AIと人間が交わる、音楽の最前線。<br>
+                VIBE CITY RECORD ──それは、未来のリアル。
+            </p>
+        </div>
+        <button id="bgm-toggle-btn">
+            <svg id="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+            <svg id="pause-icon" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></svg>
+        </button>
+    </section>
+
+    <main>
+        <!-- NEW RELEASES SECTION -->
+        <section id="new-releases" class="new-releases-section">
+            <div class="container">
+                <h2 class="section-title new-releases-title">New Release</h2>
+                <div class="new-release-card">
+                    <div class="new-release-jacket">
+                        <img src="unnamed.jpg" alt="Cybernetic Pulse Jacket" style="width: 100%; height: 100%; object-fit: cover;">
+                        <span class="new-release-tag">NEW RELEASE</span>
+                    </div>
+                    <div class="new-release-info">
+                        <p class="new-release-artist">DJ K`Oberia</p>
+                        <h3 class="new-release-title">SANCTION（制裁）</h3>
+                        <p class="new-release-description">
+                            DJ K`Oberiaの最新シングル「SANCTION（制裁）」は、〇〇党の隠された秘密に鋭く切り込むDISソング。選挙に行かない若者への強烈な呼びかけでもあり、今、最も話題を集める一曲。彼女の研ぎ澄まされたリリックと、未来を揺さぶるビートが、新たなムーブメントを巻き起こす。
+                        </p>
+                        <a href="#" class="listen-now-button" id="playPreviewButton">Preview Play</a>
+                        <audio id="sanctionPreviewAudio" src="F1FBE8DC-7F52-46E7-A984-3545E6AA3C24-_1_.mp3" preload="auto" style="display: none;"></audio>
+                        <a href="https://suno.com/s/UKcPqqWAOjBbOQuU" target="_blank" class="listen-on-suno-button">Listen on SUNO</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">About VIBECity RECORD</h2>
+                <div class="about-content">
+                    <p>
+                        VIBECity RECORDは、AIと人間が共創する新しい音楽の形を追求するレーベルです。
+                        私たちは、テクノロジーが感情を表現するための新しいキャンバスであると信じています。
+                        DJ K`Oberiaを筆頭に、ジャンルの垣根を越えた革新的なアーティストを世界に送り出すことを目指しています。
+                        将来的には、リアルタイムでオーディエンスと対話しながら音楽を生成するライブパフォーマンスや、VR空間での音楽体験など、新しいエンターテイDントの形を計画しています。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIBE CITY SECTION -->
+        <section id="vibe-city">
+            <div class="container">
+                <h2 class="section-title">VIBE CITY</h2>
+                <div class="about-content">
+                    <p>
+                        VIBE CITYは、四国の中心に位置する架空の都市。最新のテクノロジーと豊かな自然が融合し、多様な文化が息づく場所です。この都市は、音楽、アート、テクノロジーの実験場として機能し、VIBECity RECORDのアーティストたちがインスピレーションを得る源となっています。都市の鼓動が、私たちの音楽のビートを創り出しています。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ARTISTS SECTION -->
+        <section id="artists">
+            <div class="container">
+                <h2 class="section-title">Artists</h2>
+                <div class="artist-card">
+                    <div class="artist-photo">
+                        <img src="unnamed (1).png" alt="DJ Tenkasu" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                    </div>
+                    <div class="artist-info">
+                        <h3 class="artist-name">DJ Tenkasu</h3>
+                        <p class="artist-bio">
+                            小さい頃から音楽が好きで、VIBECity RECORD代表。13歳の時にHIPHOPに出会い、宇多田ヒカル、MISIA、m-flo、90s HIPHOP、90s R&B、2000年代の音楽に影響を受ける。16歳の時には、インディーズでリリースしたプロデュース曲「Neon Dreams」がアメリカのラッパーCipherと共演し、その才能を早くから開花させた。現在は四国の真ん中付近に在住し、拠点を東京から移し、AIなどの最新テクノロジーを駆使して架空都市「VIBECITY」を築き、レーベル化。音楽の未来を創造し続ける。現在はプロデュース業の傍ら、趣味のラーメン探求にも情熱を注いでいる。
+                        </p>
+                        <div class="artist-hashtags">
+                            <span class="hashtag">#VIBECityRECORD</span>
+                            <span class="hashtag">#HIPHOP</span>
+                            <span class="hashtag">#JPOP</span>
+                            <span class="hashtag">#R&B</span>
+                            <span class="hashtag">#Founder</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="artist-card">
+                    <div class="artist-photo">
+                        <img src="unnamed.png" alt="DJ K`Oberia" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                    </div>
+                    <div class="artist-info">
+                        <h3 class="artist-name">DJ K`Oberia</h3>
+                        <p class="artist-bio">
+                            大学在学中に渋谷のクラブ「Club Cyberia」で音を浴び、
+                            DJ Tenkasuと出会い、ユニット「Digital Echoes」を結成。
+                            下北沢「NEON DOME」で自身のパーティー“灯 - KAGEROU -”を主宰し、
+                            その独自のスタイルと存在感が話題となる。
+
+                            <br><br>
+                            22歳でVIBECity RECORDからデビュー。
+                            しなやかなビートとストレートなリリックで注目を集め、
+                            今ではVIBECityで最も人気のラッパーの一人に。
+
+                            <br><br>
+                            毎週土曜、仮想空間クラブ「Meta Lounge NAGOMI」でのレギュラーパーティーには、
+                            国内外から数千人がアクセス。
+                            "メタバースの夜を揺らす女王"として、世界中の耳と心を震わせている。
+                        </p>
+                        <div class="artist-hashtags">
+                            <span class="hashtag">#AI</span>
+                            <span class="hashtag">#R&B</span>
+                            <span class="hashtag">#HipHop</span>
+                            <span class="hashtag">#Tokyo</span>
+                            <span class="hashtag">#TOKUSHIMA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="artist-card">
+                    <div class="artist-photo">
+                        <img src="HealthSystemToastIcon.png" alt="hirothug" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                    </div>
+                    <div class="artist-info">
+                        <h3 class="artist-name">hirothug</h3>
+                        <p class="artist-bio">
+                            大阪のアンダーグラウンドシーンで名を馳せるラッパー、hirothug。彼の代表曲「natto」は、関西のストリートでスマッシュヒットを記録し、その存在感を不動のものとした。OASIS、Dragon Ash、キングギドラに影響を受け、満を持してVIBECity RECORDからメジャーデビューを果たし、そのリアルなリリックと圧倒的なライブパフォーマンスで、日本のヒップホップシーンに新たな風を吹き込む。
+                        </p>
+                        <div class="artist-hashtags">
+                            <span class="hashtag">#大阪</span>
+                            <span class="hashtag">#natto</span>
+                            <span class="hashtag">#Underground</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MUSIC SECTION -->
+        <section id="music">
+            <div class="container">
+                <h2 class="section-title">Featured Releases</h2>
+                <div class="music-grid">
+                    <!-- Song 1 -->
+                    <div class="song-card" data-audio-src="Sunday Cruising .mp3">
+                        <div class="jacket-placeholder">
+                            <img src="BC9DB215-B199-45CA-B378-DAEC64E80983.PNG" alt="Sunday cruising Jacket">
+                            <div class="jacket-overlay">
+                                <button class="play-button">Play</button>
+                            </div>
+                        </div>
+                        <div class="song-info">
+                            <p class="song-artist">DJ K`Oberia</p>
+                            <h3 class="song-title">Sunday cruising</h3>
+                            <span class="song-tag">HIPHOP</span>
+                        </div>
+                    </div>
+
+                    <!-- Song 2 -->
+                    <div class="song-card">
+                        <div class="jacket-placeholder">
+                            <img src="image_large_c72853e1-70c4-4214-9214-bc2d1be4ac53.jpeg" alt="natto Jacket" style="width: 100%; height: 100%; object-fit: cover;">
+                             <div class="jacket-overlay">
+                                <a href="https://suno.com/s/fas69d77h6yrYJrf" target="_blank" class="listen-on-suno-button">Listen on SUNO</a>
+                            </div>
+                        </div>
+                        <div class="song-info">
+                            <p class="song-artist">hirothug</p>
+                            <h3 class="song-title">natto</h3>
+                            <span class="song-tag alt">HIPHOP</span>
+                        </div>
+                    </div>
+
+                    <!-- Song 3 -->
+                    <div class="song-card" data-audio-src="この春に、.mp3">
+                        <div class="jacket-placeholder">
+                            <img src="IMG_6852.jpg" alt="この春に、帰れるなら Jacket">
+                            <span class="song-tag-overlay">人気急上昇</span>
+                            <div class="jacket-overlay">
+                                <button class="play-button">Play</button>
+                                <a href="https://suno.com/s/35BgmHBQzo2VRRig" target="_blank" class="listen-on-suno-button">Listen on SUNO</a>
+                            </div>
+                        </div>
+                        <div class="song-info">
+                            <p class="song-artist">DJ K`Oberia</p>
+                            <h3 class="song-title">この春に、帰れるなら</h3>
+                            <span class="song-tag alt">POP</span>
+                        </div>
+                    </div>
+
+                    <!-- Song 4 -->
+                    <div class="song-card" data-audio-src="ダンスフロアは嘘.mp3">
+                        <div class="jacket-placeholder">
+                            <img src="unnamed (3).png" alt="ダンスフロアは嘘でいっぱい Jacket">
+                            <div class="jacket-overlay">
+                                <button class="play-button">Play</button>
+                                <a href="https://suno.com/s/a5TBEWnQdV17dnEU" target="_blank" class="listen-on-suno-button">Listen on SUNO</a>
+                            </div>
+                        </div>
+                        <div class="song-info">
+                            <p class="song-artist">DJ K`Oberia</p>
+                            <h3 class="song-title">ダンスフロアは嘘でいっぱい</h3>
+                            <span class="song-tag alt">R&B</span>
+                        </div>
+                    </div>
+
+                    <!-- Song 5 -->
+                    <div class="song-card">
+                        <div class="jacket-placeholder">
+                            <img src="image_large_48a0b247-193e-4f04-8ccb-3a3a2da2e8a8.jpeg" alt="たっすい Jacket">
+                            <span class="song-tag-overlay">人気急上昇</span>
+                            <div class="jacket-overlay">
+                                <a href="https://suno.com/s/HaEa0ItPLyzlFpdw" target="_blank" class="listen-on-suno-button">Listen on SUNO</a>
+                            </div>
+                        </div>
+                        <div class="song-info">
+                            <p class="song-artist">hirothug</p>
+                            <h3 class="song-title">たっすい</h3>
+                            <span class="song-tag">HIPHOP</span>
+                        </div>
+                    </div>
+
+                    <!-- Song 6 -->
+                    <div class="song-card" data-audio-src="金曜2040.mp3">
+                        <div class="jacket-placeholder">
+                            <img src="unnamed (2).png" alt="金曜20:40 Jacket">
+                            <div class="jacket-overlay">
+                                <button class="play-button">Play</button>
+                                <a href="https://suno.com/s/FLM1Ak0OD5eEouGd" target="_blank" class="listen-on-suno-button">Listen on SUNO</a>
+                            </div>
+                        </div>
+                        <div class="song-info">
+                            <p class="song-artist">DJ K`Oberia</p>
+                            <h3 class="song-title">金曜20:40</h3>
+                            <span class="song-tag alt">R&B</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p class="footer-contact">Contact: <a href="https://www.instagram.com/tenkasuchan825/" target="_blank" class="text-white hover:text-accent-color-1">DJ Tenkasu Instagram</a></p>
+            <p class="footer-social">Follow us: <a href="https://www.instagram.com/tenkasuchan825/" target="_blank" class="text-white hover:text-accent-color-1">Instagram</a></p>
+            <p>&copy; 2025 VIBECity RECORD. All Rights Reserved.</p>
+            <p class="footer-credits">Designed and developed by AI</p>
+        </div>
+    </footer>
+    
+    <audio id="audio-player" style="display:none;"></audio>
+    <audio id="bgm-player" src="welcome to VIBE City.mp3" loop></audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- BGM Player Logic ---
+            const bgmPlayer = document.getElementById('bgm-player');
+            const bgmToggleButton = document.getElementById('bgm-toggle-btn');
+            const playIcon = document.getElementById('play-icon');
+            const pauseIcon = document.getElementById('pause-icon');
+
+            if (bgmToggleButton && bgmPlayer && playIcon && pauseIcon) {
+                bgmToggleButton.addEventListener('click', function() {
+                    if (bgmPlayer.paused) {
+                        bgmPlayer.play();
+                        playIcon.style.display = 'none';
+                        pauseIcon.style.display = 'block';
+                    } else {
+                        bgmPlayer.pause();
+                        playIcon.style.display = 'block';
+                        pauseIcon.style.display = 'none';
+                    }
+                });
+            }
+
+            // --- Preview Button Logic ---
+            const previewButton = document.getElementById('playPreviewButton');
+            const previewAudio = document.getElementById('sanctionPreviewAudio');
+            const previewDuration = 30; // プレビュー再生時間（秒）
+
+            if (previewButton && previewAudio) {
+                previewButton.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    if (previewAudio.paused) {
+                        previewAudio.currentTime = 0;
+                        previewAudio.play();
+                        previewButton.textContent = 'Playing...';
+                    } else {
+                        previewAudio.pause();
+                        previewButton.textContent = 'Preview Play';
+                    }
+                });
+
+                previewAudio.ontimeupdate = function() {
+                    if (previewAudio.currentTime >= previewDuration) {
+                        previewAudio.pause();
+                    }
+                };
+
+                previewAudio.onended = function() {
+                    previewButton.textContent = 'Preview Play';
+                };
+                
+                previewAudio.onpause = function() {
+                     previewButton.textContent = 'Preview Play';
+                }
+            }
+
+            // --- Music Grid Player Logic ---
+            const audioPlayer = document.getElementById('audio-player');
+            let currentPlayingButton = null;
+
+            document.querySelectorAll('.play-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const songCard = this.closest('.song-card');
+                    const audioSrc = songCard.dataset.audioSrc;
+
+                    if (currentPlayingButton === this) {
+                        audioPlayer.pause();
+                    } else {
+                        if (currentPlayingButton) {
+                           currentPlayingButton.textContent = 'Play';
+                        }
+                        audioPlayer.src = audioSrc;
+                        audioPlayer.play();
+                        this.textContent = 'Pause';
+                        currentPlayingButton = this;
+                    }
+                });
+            });
+
+            audioPlayer.onpause = function() {
+                if (currentPlayingButton) {
+                    currentPlayingButton.textContent = 'Play';
+                    currentPlayingButton = null;
+                }
+            };
+            
+            audioPlayer.onended = function() {
+                if (currentPlayingButton) {
+                    currentPlayingButton.textContent = 'Play';
+                    currentPlayingButton = null;
+                }
+            };
+        });
+    </script>
+
+</body>
+</html>
