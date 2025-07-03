@@ -668,6 +668,23 @@
                 display: flex; /* Show hamburger on mobile */
             }
         }
+
+        /* Desktop Navigation (explicitly show nav-links and hide hamburger) */
+        @media (min-width: 769px) {
+            .nav-links {
+                display: flex !important; /* Ensure nav-links are always displayed on desktop */
+                transform: translateX(0%) !important; /* Ensure no translation */
+                position: static !important; /* Remove fixed positioning */
+                height: auto !important;
+                width: auto !important;
+                background-color: transparent !important;
+                flex-direction: row !important;
+            }
+
+            .hamburger-menu {
+                display: none !important; /* Ensure hamburger is hidden on desktop */
+            }
+        }
     </style>
 </head>
 <body>
