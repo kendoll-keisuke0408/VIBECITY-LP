@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIBECity RECORD - AIと共創する音楽の未来</title>
+    <meta name="description" content="VIBECity RECORDの公式サイト。AIアーティストDJ K`Oberiaやhirothugの最新リリース、楽曲情報、そして架空都市「VIBE CITY」の探索へご招待。音楽の未来をここから体験。">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Roboto+Mono:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #101010;
+            --card-bg-color: #1a1a1a;
+            --primary-text-color: #E0E0E0;
+            --secondary-text-color: #a0a0a0;
+            --accent-color-1: #00ffff;
+            --accent-color-2: #ff00ff;
+            --border-color: #3a3a3a;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--primary-text-color);
+            overflow-x: hidden;
+            padding-top: 70px;
+        }
+
+        body.no-scroll {
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--accent-color-1);
+            text-shadow: 0 0 10px var(--accent-color-1), 0 0 20px var(--accent-color-1);
+        }
+
+        /* --- Header --- */
+        .main-header {
+            background-color: rgba(16, 16, 16, 0.9);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--primary-text-color);
+            text-decoration: none;
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color-1);
+            text-shadow: 0 0 5px var(--accent-color-1), 0 0 10px var(--accent-color-1);
+        }
+
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            cursor: pointer;
+            z-index: 110;
+        }
+
+        .hamburger-menu span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-text-color);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .nav-links.active {
+            transform: translateX(0%);
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 0;
+        }
+
+        .hero-backgrounds {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-backgrounds img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .hero-backgrounds img.active {
+            opacity: 1;
+        }
+
+        .hero-content-wrapper {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100%;
+            width: 100%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            font-family: 'Roboto Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        .hero-label {
+            font-size: 6rem;
+            font-weight: 700;
+            color: var(--accent-color-1);
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px var(--accent-color-1), 0 0 20px var(--accent-color-1);
+            animation: neon-glow 1.5s infinite alternate;
+        }
+
+        @keyframes neon-glow {
+            from { text-shadow: 0 0 10px var(--accent-color-1), 0 0 20px var(--accent-color-1); }
+            to { text-shadow: 0 0 20px var(--accent-color-1), 0 0 30px var(--accent-color-1), 0 0 40px var(--accent-color-1); }
+        }
+
+        .hero-catchphrase-container {
+            min-height: 100px; /* Adjust as needed */
+        }
+
+        .hero-catchphrase {
+            font-size: 1.2rem;
+            font-weight: 400;
+            max-width: 600px;
+            line-height: 1.5;
+            color: #FFFFFF;
+            text-align: center;
+            margin: 0 auto;
+            text-shadow: 0 0 5px rgba(255,255,255,0.5), 0 0 10px rgba(255,255,255,0.3);
+        }
+
+        #bgm-toggle-btn {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--accent-color-1);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            transition: background-color 0.3s;
+        }
+
+        #bgm-toggle-btn:hover {
+            background: rgba(0, 255, 255, 0.2);
+        }
+
+        #bgm-toggle-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--accent-color-1);
+        }
+
+        .hero-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            display: flex;
+            gap: 10px;
+        }
+
+        .hero-dot {
+            width: 12px;
+            height: 12px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .hero-dot.active {
+            background-color: var(--accent-color-1);
+        }
+
+        /* --- New Releases Section --- */
+        .new-releases-section {
+            background-color: var(--card-bg-color);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .new-releases-title {
+            color: var(--accent-color-2);
+            text-shadow: 0 0 10px var(--accent-color-2), 0 0 20px var(--accent-color-2);
+        }
+
+        .new-release-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            background-color: var(--bg-color);
+            border: 2px solid var(--accent-color-1);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .new-release-jacket {
+            width: 250px;
+            height: 250px;
+            position: relative;
+            border: 2px solid var(--accent-color-2);
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .new-release-jacket img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .new-release-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #ff00ff;
+            color: #fff;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 4px;
+            animation: pulse 1.5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); opacity: 1; }
+            to { transform: scale(1.05); opacity: 0.8; }
+        }
+
+        .new-release-artist {
+            font-size: 1.1rem;
+            color: var(--secondary-text-color);
+            margin-bottom: 5px;
+        }
+
+        .new-release-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2.5rem;
+            color: var(--primary-text-color);
+            margin-bottom: 15px;
+        }
+
+        .new-release-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--secondary-text-color);
+            margin-bottom: 30px;
+        }
+
+        .listen-now-button, .listen-on-suno-button {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .listen-now-button {
+            background-color: var(--accent-color-2);
+            color: #fff;
+            border: 2px solid var(--accent-color-2);
+        }
+
+        .listen-now-button:hover {
+            background-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 0, 255, 0.4);
+        }
+
+        .listen-on-suno-button {
+            background-color: var(--accent-color-1);
+            color: var(--bg-color);
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            border: 2px solid var(--accent-color-1);
+        }
+
+        .listen-on-suno-button:hover {
+            background-color: transparent;
+            color: var(--accent-color-1);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
+        }
+
+        @media (min-width: 768px) {
+            .new-release-card {
+                flex-direction: row;
+                text-align: left;
+            }
+            .new-release-info {
+                text-align: left;
+            }
+        }
+
+        /* --- About & VIBE CITY Sections --- */
+        #about {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: rgba(16, 16, 16, 0.7);
+            position: relative;
+            z-index: 0;
+            background-image: url('ChatGPT Image 2025年6月29日 14_10_03.png');
+        }
+
+        #vibe-city {
+            background-image: none; /* Remove the background image as we now have a map */
+            background-color: var(--bg-color);
+        }
+
+        .vibe-city-map-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 2px solid var(--accent-color-1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .map-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .poi {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent-color-2);
+            border-radius: 50%;
+            border: 2px solid #fff;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: pulse-poi 2s infinite;
+        }
+
+        .poi:hover {
+            transform: translate(-50%, -50%) scale(1.5);
+            box-shadow: 0 0 20px var(--accent-color-2);
+        }
+
+        @keyframes pulse-poi {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 0, 255, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 20px rgba(255, 0, 255, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 0, 255, 0);
+            }
+        }
+
+        /* POI Modal Styles */
+        .poi-modal {
+            display: none; 
+            position: fixed; 
+            z-index: 200; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.8);
+            animation: fadeIn 0.5s;
+        }
+
+        .poi-modal-content {
+            background-color: var(--card-bg-color);
+            margin: 10% auto;
+            padding: 30px;
+            border: 1px solid var(--accent-color-1);
+            border-radius: 8px;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+            position: relative;
+        }
+
+        .poi-modal-close {
+            color: #aaa;
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .poi-modal-close:hover, .poi-modal-close:focus {
+            color: var(--accent-color-1);
+            text-decoration: none;
+        }
+
+        #poi-modal-image {
+            width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        #poi-modal-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            color: var(--accent-color-2);
+            margin-bottom: 15px;
+        }
+
+        #poi-modal-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--primary-text-color);
+        }
+
+        #blog-modal .poi-modal-content {
+            text-align: left;
+        }
+
+        #blog-modal-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2.2rem;
+            color: var(--accent-color-2);
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        #blog-modal-meta {
+            font-size: 0.8rem;
+            color: var(--secondary-text-color);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        #blog-modal-body {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--primary-text-color);
+            max-height: 50vh;
+            overflow-y: auto;
+            padding-right: 15px; /* For scrollbar */
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0}
+            to {opacity: 1}
+        }
+
+        #about .container, #vibe-city .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-content {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            margin-top: 40px;
+            line-height: 1.8;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 50px 40px;
+            border-radius: 8px;
+            color: #FFFFFF;
+        }
+
+        /* --- Artists Section --- */
+        .artist-card {
+            background-color: var(--card-bg-color);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 8px;
+            color: var(--secondary-text-color);
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .artist-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+        }
+
+        .artist-name {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2rem;
+            color: var(--primary-text-color);
+            margin-bottom: 15px;
+        }
+
+        .artist-bio {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .artist-hashtags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .hashtag {
+            background-color: var(--accent-color-2);
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* --- Music Section --- */
+        .music-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .song-card {
+            background-color: var(--card-bg-color);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .song-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 255, 255, 0.2);
+        }
+
+        .jacket-placeholder {
+            width: 100%;
+            padding-bottom: 100%;
+            position: relative;
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .jacket-placeholder img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+
+        .song-card:hover .jacket-placeholder img {
+            opacity: 0.3;
+        }
+
+        .jacket-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .song-card:hover .jacket-overlay {
+            opacity: 1;
+        }
+
+        .jacket-overlay .listen-on-suno-button,
+        .jacket-overlay .play-button {
+            margin: 5px;
+            transform: translateY(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .song-card:hover .jacket-overlay .listen-on-suno-button,
+        .song-card:hover .jacket-overlay .play-button {
+            transform: translateY(0);
+        }
+
+        .play-button {
+            background-color: var(--accent-color-2);
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 2px solid var(--accent-color-2);
+            cursor: pointer;
+        }
+
+        .play-button:hover {
+            background-color: transparent;
+        }
+
+        .song-tag-overlay {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--accent-color-2);
+            color: #fff;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border-radius: 4px;
+            z-index: 1;
+        }
+
+        .jacket-placeholder::before {
+            content: 'VC';
+            font-weight: bold;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 4rem;
+            color: #555;
+            z-index: 0;
+        }
+
+        .song-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .song-artist {
+            font-size: 0.9rem;
+            color: var(--secondary-text-color);
+            margin-bottom: 5px;
+        }
+
+        .song-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.5rem;
+            color: var(--primary-text-color);
+            margin-bottom: 10px;
+        }
+
+        .song-tag {
+            background-color: var(--accent-color-1);
+            color: var(--bg-color);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .song-tag.alt {
+            background-color: var(--accent-color-2);
+        }
+
+        /* --- Blog Section --- */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+/* --- Music Video Section --- */
+#mv {
+    background-color: var(--card-bg-color);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.mv-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.mv-info {
+    text-align: center;
+}
+
+.mv-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2.5rem;
+    color: var(--primary-text-color);
+    margin-bottom: 15px;
+}
+
+.mv-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--secondary-text-color);
+    margin-bottom: 30px;
+}
+
+.youtube-button {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #FF0000;
+    color: #fff;
+    border: 2px solid #FF0000;
+}
+
+.youtube-button:hover {
+    background-color: transparent;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+}
+
+@media (min-width: 768px) {
+    .mv-container {
+        flex-direction: row;
+    }
+
+    .video-wrapper {
+        width: 60%;
+    }
+
+    .mv-info {
+        width: 40%;
+        text-align: left;
+    }
+}
+
+        .blog-card {
+            background-color: var(--card-bg-color);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 0, 255, 0.2);
+        }
+
+        .blog-card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .blog-card-content {
+            padding: 25px;
+        }
+
+        .blog-card-category {
+            display: inline-block;
+            background-color: var(--accent-color-2);
+            color: #fff;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .blog-card-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.6rem;
+            color: var(--primary-text-color);
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .blog-card-meta {
+            font-size: 0.8rem;
+            color: var(--secondary-text-color);
+            margin-bottom: 20px;
+        }
+
+        .blog-card-link {
+            color: var(--accent-color-1);
+            text-decoration: none;
+            font-weight: 700;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .blog-card-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #101010;
+            color: var(--secondary-text-color);
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 80px;
+            border-top: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .audio-visualizer {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            height: 50px;
+            margin-bottom: 20px;
+            gap: 4px;
+        }
+
+        .visualizer-bar {
+            width: 8px;
+            background-color: var(--accent-color-1);
+            animation: visualize 1.2s infinite ease-in-out alternate;
+        }
+
+        .visualizer-bar:nth-child(2) { animation-delay: -1.0s; }
+        .visualizer-bar:nth-child(3) { animation-delay: -0.8s; }
+        .visualizer-bar:nth-child(4) { animation-delay: -0.6s; }
+        .visualizer-bar:nth-child(5) { animation-delay: -0.4s; }
+        .visualizer-bar:nth-child(6) { animation-delay: -0.4s; }
+        .visualizer-bar:nth-child(7) { animation-delay: -0.6s; }
+        .visualizer-bar:nth-child(8) { animation-delay: -0.8s; }
+        .visualizer-bar:nth-child(9) { animation-delay: -1.0s; }
+        .visualizer-bar:nth-child(10) { animation-delay: -1.2s; }
+
+        @keyframes visualize {
+            from { height: 2px; }
+            to { height: 40px; }
+        }
+
+        .footer-contact, .footer-social {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .footer-credits {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 3.5rem; }
+            .hero-label { font-size: 4rem; }
+            .hero-catchphrase { font-size: 1rem; }
+            .section-title { font-size: 2.5rem; }
+            .new-release-card { padding: 20px; }
+            .new-release-jacket { width: 200px; height: 200px; }
+            .new-release-title { font-size: 2rem; }
+            .artist-photo { width: 120px; height: 120px; font-size: 3rem; }
+            .artist-name { font-size: 1.8rem; }
+            .song-title { font-size: 1.3rem; }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 70%;
+                height: 100%;
+                background-color: rgba(16, 16, 16, 0.95);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transform: translateX(100%);
+                transition: transform 0.3s ease-in-out;
+                z-index: 99;
+            }
+
+            .nav-links li { margin: 20px 0; }
+            .nav-links a { font-size: 1.5rem; }
+            .hamburger-menu { display: flex; }
+        }
+
+        @media (min-width: 769px) {
+            .nav-links {
+                display: flex !important;
+                transform: translateX(0%) !important;
+                position: static !important;
+                height: auto !important;
+                width: auto !important;
+                background-color: transparent !important;
+                flex-direction: row !important;
+            }
+            .hamburger-menu { display: none !important; }
+        }
+
+        /* --- Additional Responsive Adjustments --- */
+        @media (max-width: 768px) {
+            .about-content {
+                padding: 40px 25px;
+            }
+            .new-release-description {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding-top: 60px;
+            }
+            .main-header .container {
+                padding: 0 15px;
+            }
+            .header-logo img {
+                height: 40px;
+            }
+            .hero-label {
+                font-size: 3rem;
+                letter-spacing: 3px;
+            }
+            .hero-catchphrase {
+                font-size: 0.9rem;
+                max-width: 90%;
+            }
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 40px;
+            }
+            section {
+                padding: 60px 0;
+            }
+            .new-release-card {
+                padding: 20px 15px;
+            }
+            .new-release-jacket {
+                width: 150px;
+                height: 150px;
+            }
+            .new-release-title {
+                font-size: 1.8rem;
+            }
+            .artist-card {
+                padding: 30px 20px;
+            }
+            .poi-modal-content {
+                width: 90%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="header-logo">
+                <a href="#hero"><img src="ChatGPT Image 2025年6月29日 17_26_15.png" alt="VIBECity RECORD Logo"></a>
+            </div>
+            <div class="hamburger-menu" id="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#hero">TOP</a></li>
+                    <li><a href="#new-releases">NEW RELEASES</a></li>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#vibe-city">Explore VIBE CITY</a></li>
+                    <li><a href="#artists">ARTISTS</a></li>
+                    <li><a href="#music">MUSIC</a></li>
+                    <li><a href="#mv">MV</a></li>
+                    <li><a href="#blog">BLOG</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="hero-backgrounds">
+            <img src="6434b4e6-a3f5-41ca-87bf-9e6a8451dd6c.png" alt="Hero Background 1" class="active">
+            <img src="ChatGPT Image 2025年7月3日 22_24_07.png" alt="Hero Background 2">
+        </div>
+        <div class="hero-content-wrapper">
+            <div class="hero-content">
+                <p class="hero-label">VIBECity RECORD</p>
+                <div class="hero-catchphrase-container">
+                    <p class="hero-catchphrase" id="decode-text" data-text-lines='["AIとリアルの共鳴が、音楽の未来を創る。", "AIと人間が交わる、音楽の最前線。", "VIBE CITY RECORD ──それは、未来のリアル。"]'></p>
+                </div>
+            </div>
+            <button id="bgm-toggle-btn">
+                <svg id="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+                <svg id="pause-icon" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path></svg>
+            </button>
+            <div class="hero-dots" id="hero-dots">
+                <span class="hero-dot active" data-index="0"></span>
+                <span class="hero-dot" data-index="1"></span>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <!-- NEW RELEASES SECTION -->
+        <section id="new-releases" class="new-releases-section">
+            <div class="container">
+                <h2 class="section-title new-releases-title">New Release</h2>
+                <div class="new-release-card">
+                    <div class="new-release-jacket">
+                        <img src="unnamed.jpg" alt="Cybernetic Pulse Jacket" style="width: 100%; height: 100%; object-fit: cover;">
+                        <span class="new-release-tag">NEW RELEASE</span>
+                    </div>
+                    <div class="new-release-info">
+                        <p class="new-release-artist">DJ K`Oberia</p>
+                        <h3 class="new-release-title">SANCTION（制裁）</h3>
+                        <p class="new-release-description">
+                            DJ K`Oberiaの最新シングル「SANCTION（制裁）」は、〇〇党の隠された秘密に鋭く切り込むDISソング。選挙に行かない若者への強烈な呼びかけでもあり、今、最も話題を集める一曲。彼女の研ぎ澄まされたリリックと、未来を揺さぶるビートが、新たなムーブメントを巻き起こす。
+                        </p>
+                        <a href="#" class="listen-now-button" id="playPreviewButton">Preview Play</a>
+                        <audio id="sanctionPreviewAudio" src="F1FBE8DC-7F52-46E7-A984-3545E6AA3C24-_1_.mp3" preload="auto" style="display: none;"></audio>
+                        <a href="https://suno.com/s/UKcPqqWAOjBbOQuU" target="_blank" class="listen-on-suno-button">Listen on SUNO</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">About VIBECity RECORD</h2>
+                <div class="about-content animate-on-scroll">
+                    <p>
+                        VIBECity RECORDは、AIと人間が共創する新しい音楽の形を追求するレーベルです。
+                        私たちは、テクノロジーが感情を表現するための新しいキャンバスであると信じています。
+                        DJ K`Oberiaを筆頭に、ジャンルの垣根を越えた革新的なアーティストを世界に送り出すことを目指しています。
+                        将来的には、リアルタイムでオーディエンスと対話しながら音楽を生成するライブパフォーマンスや、VR空間での音楽体験など、新しいエンターテイDントの形を計画しています。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIBE CITY SECTION -->
+        <section id="vibe-city">
+            <div class="container">
+                <h2 class="section-title">Explore VIBE CITY</h2>
+                <div class="vibe-city-map-container">
+                    <img src="ChatGPT Image 2025年7月31日 23_37_35.png" alt="VIBE CITY Map" class="map-image">
+                    <!-- Points of Interest (仮設置) -->
+                    <div class="poi" style="top: 30%; left: 40%;" data-title="Meta Lounge NAGOMI" data-description="DJ K`OberiaがレジデントDJを務める仮想空間クラブ。毎週土曜には世界中から数千人が熱狂の渦に。" data-image="ChatGPT Image 2025年7月11日 23_12_21.png"></div>
+                    <div class="poi" style="top: 70%; left: 60%;" data-title="PILK Alley" data-description="VIBE CITYのストリートカルチャー発信地。hirothugが『natto』のMVを撮影した場所としても知られる。" data-image="ChatGPT Image 2025年7月11日 23_12_32.png"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ARTISTS SECTION -->
+        <section id="artists">
+            <div class="container">
+                <h2 class="section-title">Artists</h2>
+                <div class="artist-card">
+                    <div class="artist-photo">
+                        <img src="unnamed (1).png" alt="DJ Tenkasu" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                    </div>
+                    <div class="artist-info">
+                        <h3 class="artist-name">DJ Tenkasu</h3>
+                        <p class="artist-bio">
+                            小さい頃から音楽が好きで、VIBECity RECORD代表。13歳の時にHIPHOPに出会い、宇多田ヒカル、MISIA、m-flo、90s HIPHOP、90s R&B、2000年代の音楽に影響を受ける。16歳の時には、インディーズでリリースしたプロデュース曲「Neon Dreams」がアメリカのラッパーCipherと共演し、その才能を早くから開花させた。現在は四国の真ん中付近に在住し、拠点を東京から移し、AIなどの最新テクノロジーを駆使して架空都市「VIBECITY」を築き、レーベル化。音楽の未来を創造し続ける。現在はプロデュース業の傍ら、趣味のラーメン探求にも情熱を注いでいる。
+                        </p>
+                        <div class="artist-hashtags">
+                            <span class="hashtag">#VIBECityRECORD</span>
+                            <span class="hashtag">#HIPHOP</span>
+                            <span class="hashtag">#JPOP</span>
+                            <span class="hashtag">#R&B</span>
+                            <span class="hashtag">#Founder</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="artist-card">
+                    <div class="artist-photo">
+                        <img src="unnamed.png" alt="DJ K`Oberia" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                    </div>
+                    <div class="artist-info">
+                        <h3 class="artist-name">DJ K`Oberia</h3>
+                        <p class="artist-bio">
+                            大学在学中に渋谷のクラブ「Club Cyberia」で音を浴び、
+                            DJ Tenkasuと出会い、ユニット「Digital Echoes」を結成。
+                            下北沢「NEON DOME」で自身のパーティー“灯 - KAGEROU -”を主宰し、
+                            その独自のスタイルと存在感が話題となる。
+
+                            <br><br>
+                            22歳でVIBECity RECORDからデビュー。
+                            しなやかなビートとストレートなリリックで注目を集め、
+                            今ではVIBECityで最も人気のラッパーの一人に。
+
+                            <br><br>
+                            毎週土曜、仮想空間クラブ「Meta Lounge NAGOMI」でのレギュラーパーティーには、
+                            国内外から数千人がアクセス。
+                            "メタバースの夜を揺らす女王"として、世界中の耳と心を震わせている。
+                        </p>
+                        <div class="artist-hashtags">
+                            <span class="hashtag">#AI</span>
+                            <span class="hashtag">#R&B</span>
+                            <span class="hashtag">#HipHop</span>
+                            <span class="hashtag">#Tokyo</span>
+                            <span class="hashtag">#TOKUSHIMA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="artist-card">
+                    <div class="artist-photo">
+                        <img src="b678bf73-1e76-4b0b-bab3-7a941f35de16.png" alt="hirothug" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                    </div>
+                    <div class="artist-info">
+                        <h3 class="artist-name">hirothug</h3>
+                        <p class="artist-bio">
+                            大阪のアンダーグラウンドシーンで名を馳せるラッパー、hirothug。彼の代表曲「natto」は、関西のストリートでスマッシュヒットを記録し、その存在感を不動のものとした。OASIS、Dragon Ash、キングギドラに影響を受け、満を持してVIBECity RECORDからメジャーデビューを果たし、そのリアルなリリックと圧倒的なライブパフォーマンスで、日本のヒップホップシーンに新たな風を吹き込む。
+                        </p>
+                        <div class="artist-hashtags">
+                            <span class="hashtag">#大阪</span>
+                            <span class="hashtag">#natto</span>
+                            <span class="hashtag">#Underground</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MUSIC SECTION -->
+        <section id="music">
+            <div class="container">
+                <h2 class="section-title">Featured Releases</h2>
+                <div class="music-grid">
+                    <!-- Song 1 -->
+                    <div class="song-card" data-audio-src="Sunday Cruising .mp3">
+                        <div class="jacket-placeholder">
+                            <img src="BC9DB215-B199-45CA-B378-DAEC64E80983.PNG" alt="Sunday cruising Jacket">
+                            <div class="jacket-overlay">
+                                <button class="play-button">Play</button>
+                            </div>
+                        </div>
+                        <div class="song-info">
+                            <p class="song-artist">Kasumi.A</p>
+                            <h3 class="song-title">Sunday cruising</h3>
+                            <span class="song-tag">HIPHOP</span>
+                        </div>
+                    </div>
+
+                    <!-- Song 2 -->
+                    <div class="song-card">
+                        <div class="jacket-placeholder">
+                            <img src="image_large_c72853e1-70c4-4214-9214-bc2d1be4ac53.jpeg" alt="natto Jacket" style="width: 100%; height: 100%; object-fit: cover;">
+                             <div class="jacket-overlay">
+                                <a href="https://suno.com/s/fas69d77h6yrYJrf" target="_blank" class="listen-on-suno-button">Listen on SUNO</a>
+                            </div>
+                        </div>
+                        <div class="song-info">
+                            <p class="song-artist">hirothug</p>
+                            <h3 class="song-title">natto</h3>
+                            <span class="song-tag alt">HIPHOP</span>
+                        </div>
+                    </div>
+
+                    <!-- Song 3 -->
+                    <div class="song-card" data-audio-src="この春に、.mp3">
+                        <div class="jacket-placeholder">
+                            <img src="IMG_6852.jpg" alt="この春に、帰れるなら Jacket">
+                            <span class="song-tag-overlay">人気急上昇</span>
+                            <div class="jacket-overlay">
+                                <button class="play-button">Play</button>
+                                <a href="https://suno.com/s/35BgmHBQzo2VRRig" target="_blank" class="listen-on-suno-button">Listen on SUNO</a>
+                            </div>
+                        </div>
+                        <div class="song-info">
+                            <p class="song-artist">DJ K`Oberia</p>
+                            <h3 class="song-title">この春に、帰れるなら</h3>
+                            <span class="song-tag alt">POP</span>
+                        </div>
+                    </div>
+
+                    <!-- Song 4 -->
+                    <div class="song-card" data-audio-src="ダンスフロアは嘘.mp3">
+                        <div class="jacket-placeholder">
+                            <img src="unnamed (3).png" alt="ダンスフロアは嘘でいっぱい Jacket">
+                            <div class="jacket-overlay">
+                                <button class="play-button">Play</button>
+                                <a href="https://suno.com/s/a5TBEWnQdV17dnEU" target="_blank" class="listen-on-suno-button">Listen on SUNO</a>
+                            </div>
+                        </div>
+                        <div class="song-info">
+                            <p class="song-artist">DJ K`Oberia</p>
+                            <h3 class="song-title">ダンスフロアは嘘でいっぱい</h3>
+                            <span class="song-tag alt">R&B</span>
+                        </div>
+                    </div>
+
+                    <!-- Song 5 -->
+                    <div class="song-card">
+                        <div class="jacket-placeholder">
+                            <img src="image_large_48a0b247-193e-4f04-8ccb-3a3a2da2e8a8.jpeg" alt="たっすい Jacket">
+                            <span class="song-tag-overlay">人気急上昇</span>
+                            <div class="jacket-overlay">
+                                <a href="https://suno.com/s/HaEa0ItPLyzlFpdw" target="_blank" class="listen-on-suno-button">Listen on SUNO</a>
+                            </div>
+                        </div>
+                        <div class="song-info">
+                            <p class="song-artist">hirothug</p>
+                            <h3 class="song-title">たっすい</h3>
+                            <span class="song-tag">HIPHOP</span>
+                        </div>
+                    </div>
+
+                    <!-- Song 6 -->
+                    <div class="song-card" data-audio-src="金曜2040.mp3">
+                        <div class="jacket-placeholder">
+                            <img src="unnamed (2).png" alt="金曜20:40 Jacket">
+                            <div class="jacket-overlay">
+                                <button class="play-button">Play</button>
+                                <a href="https://suno.com/s/FLM1Ak0OD5eEouGd" target="_blank" class="listen-on-suno-button">Listen on SUNO</a>
+                            </div>
+                        </div>
+                        <div class="song-info">
+                            <p class="song-artist">DJ K`Oberia</p>
+                            <h3 class="song-title">金曜20:40</h3>
+                            <span class="song-tag alt">R&B</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MUSIC VIDEO SECTION -->
+        <section id="mv">
+            <div class="container">
+                <h2 class="section-title">Music Video</h2>
+                <div class="mv-container">
+                    <div class="video-wrapper">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/FhN1xyRIMu8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="mv-info">
+                        <h3 class="mv-title">Kasumi.A - Sunday Cruising</h3>
+                        <p class="mv-description">
+                            Kasumi.Aの「Sunday Cruising」の公式ミュージックビデオ。
+                        </p>
+                        <a href="https://www.youtube.com/feed/you" target="_blank" class="youtube-button">Official YouTube Channel</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOG SECTION -->
+        <section id="blog">
+            <div class="container">
+                <h2 class="section-title">FROM VIBE CITY</h2>
+                <div class="blog-grid">
+                    <!-- Blog Post 4 -->
+                    <div class="blog-card" data-title="Meta Lounge NAGOMIでDJ K`Oberiaのリリースパーティーが開催されました。" data-meta="by VIBE CITY PRESS / 2025.08.01" data-body="新曲『Sweetie Crime』のリリースを記念したパーティーが、Meta Lounge NAGOMIで開催されました。<br><br>多くのファンが駆けつけ、DJ K`Oberiaは新曲『Sweetie Crime』を披露。会場は熱気に包まれました。<br><br>ここに動画のプレースホルダーを設置します。動画をYouTubeなどにアップロードした後、ここの部分を差し替える必要があります。">
+                        <img src="9B846203-C973-43A9-BDB5-A44B05B6585F.PNG" alt="Blog Image 4" class="blog-card-image">
+                        <div class="blog-card-content">
+                            <span class="blog-card-category">EVENT REPORT</span>
+                            <h3 class="blog-card-title">Meta Lounge NAGOMIでDJ K`Oberiaのリリースパーティーが開催されました。</h3>
+                            <p class="blog-card-meta">by VIBE CITY PRESS / 2025.08.01</p>
+                            <div class="blog-card-link">Read More &rarr;</div>
+                        </div>
+                    </div>
+                    <!-- Blog Post 1 -->
+                    <div class="blog-card" data-title="PILK Alleyで即興ラップバトルしてきた" data-meta="by DJ K`Oberia / 2025.07.28" data-body="今日はVIBE CITYの中でも特にリアルな空気が流れるPILK Alleyに行ってきた。<br><br>壁一面のグラフィティアートと、どこからか聞こえてくるビート。自然と体が動き出して、気づけば若手のラッパーたちとサイファーが始まってた。<br><br>「あんたがK'Oberiaか？」なんて言われたけど、マイクを握れば関係ない。言葉とライムが火花を散らす、最高の時間だった。やっぱりストリートは刺激的で、新しいインスピレーションをくれる。">
+                        <img src="ChatGPT Image 2025年7月31日 22_54_34.png" alt="Blog Image 1" class="blog-card-image">
+                        <div class="blog-card-content">
+                            <span class="blog-card-category">KOBERIA NOTE</span>
+                            <h3 class="blog-card-title">PILK Alleyで即興ラップバトルしてきた</h3>
+                            <p class="blog-card-meta">by DJ K`Oberia / 2025.07.28</p>
+                            <div class="blog-card-link">Read More &rarr;</div>
+                        </div>
+                    </div>
+                    <!-- Blog Post 2 -->
+                    <div class="blog-card" data-title="KAZ-RYU、また沈下橋でフリースタイル中毒" data-meta="by VIBE CITY PRESS / 2025.07.25" data-body="VIBE CITY郊外を流れる四万十川にかかる沈下橋。ここはラッパーKAZ-RYUのお気に入りの場所らしい。<br><br>今日も彼は橋の上で一人、フリースタイルをしていたとの目撃情報が多数寄せられている。「水面を見ていると、言葉が勝手に浮かんでくるんだ」と彼は言う。彼の生み出すリリックの源泉は、この雄大な自然にあるのかもしれない。">
+                        <img src="ChatGPT Image 2025年7月31日 22_54_57.png" alt="Blog Image 2" class="blog-card-image">
+                        <div class="blog-card-content">
+                            <span class="blog-card-category">WEEKLY VIBE</span>
+                            <h3 class="blog-card-title">KAZ-RYU、また沈下橋でフリースタイル中毒</h3>
+                            <p class="blog-card-meta">by VIBE CITY PRESS / 2025.07.25</p>
+                            <div class="blog-card-link">Read More &rarr;</div>
+                        </div>
+                    </div>
+                    <!-- Blog Post 3 -->
+                    <div class="blog-card" data-title="『Shadow Bridge』MV撮影の舞台裏" data-meta="by hirothug / 2025.07.22" data-body="先日公開された俺の新曲『Shadow Bridge』のMV、もう見てくれたか？<br><br>あの映像は、VIBE CITYの古い工場地帯で撮影したんだ。夜の闇に浮かび上がる鉄骨のシルエットが、この曲の世界観にぴったりだと思ってな。ドローンを使った撮影は迫力満点だったけど、実は高所恐怖症だから足がすくんでたのは内緒だ。">
+                        <img src="ChatGPT Image 2025年7月31日 22_55_03.png" alt="Blog Image 3" class="blog-card-image">
+                        <div class="blog-card-content">
+                            <span class="blog-card-category">BEHIND THE SCENES</span>
+                            <h3 class="blog-card-title">『Shadow Bridge』MV撮影の舞台裏</h3>
+                            <p class="blog-card-meta">by hirothug / 2025.07.22</p>
+                            <div class="blog-card-link">Read More &rarr;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="audio-visualizer">
+                <div class="visualizer-bar"></div>
+                <div class="visualizer-bar"></div>
+                <div class="visualizer-bar"></div>
+                <div class="visualizer-bar"></div>
+                <div class="visualizer-bar"></div>
+                <div class="visualizer-bar"></div>
+                <div class="visualizer-bar"></div>
+                <div class="visualizer-bar"></div>
+                <div class="visualizer-bar"></div>
+                <div class="visualizer-bar"></div>
+            </div>
+            <p class="footer-contact">Contact: <a href="https://www.instagram.com/tenkasuchan825/" target="_blank" class="text-white hover:text-accent-color-1">DJ Tenkasu Instagram</a></p>
+            <p class="footer-social">Follow us: <a href="https://www.instagram.com/tenkasuchan825/" target="_blank" class="text-white hover:text-accent-color-1">Instagram</a></p>
+            <p>&copy; 2025 VIBECity RECORD. All Rights Reserved.</p>
+            <p class="footer-credits">Designed and developed by AI</p>
+        </div>
+    </footer>
+    
+    <div id="poi-modal" class="poi-modal">
+        <div class="poi-modal-content">
+            <span class="poi-modal-close">&times;</span>
+            <img id="poi-modal-image" src="" alt="Location Image">
+            <h3 id="poi-modal-title"></h3>
+            <p id="poi-modal-description"></p>
+        </div>
+    </div>
+
+    <div id="blog-modal" class="poi-modal">
+        <div class="poi-modal-content">
+            <span class="poi-modal-close">&times;</span>
+            <h3 id="blog-modal-title"></h3>
+            <p id="blog-modal-meta"></p>
+            <div id="blog-modal-body"></div>
+        </div>
+    </div>
+
+    <audio id="audio-player" style="display:none;"></audio>
+    <audio id="bgm-player" src="welcome to VIBE City.mp3" loop></audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Text Decode Animation ---
+            const decodeTextElement = document.getElementById('decode-text');
+            if (decodeTextElement) {
+                const lines = JSON.parse(decodeTextElement.dataset.textLines);
+                const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{};:<>?,./';
+                let currentLineIndex = 0;
+                let currentText = '';
+                let intervalId;
+
+                function decodeEffect() {
+                    const targetText = lines[currentLineIndex];
+                    let i = 0;
+                    intervalId = setInterval(() => {
+                        if (i < targetText.length) {
+                            let randomText = '';
+                            for (let j = 0; j < targetText.length; j++) {
+                                if (j < i) {
+                                    randomText += targetText[j];
+                                } else {
+                                    randomText += chars[Math.floor(Math.random() * chars.length)];
+                                }
+                            }
+                            decodeTextElement.innerHTML = randomText.replace(/<br>/g, '\n');
+                            i++;
+                        } else {
+                            clearInterval(intervalId);
+                            decodeTextElement.innerHTML = targetText.replace(/<br>/g, '\n');
+                            setTimeout(() => {
+                                currentLineIndex = (currentLineIndex + 1) % lines.length;
+                                decodeEffect();
+                            }, 3000); // Wait 3 seconds before decoding next line
+                        }
+                    }, 50);
+                }
+                decodeEffect();
+            }
+
+            // --- BGM Player Logic ---
+            const bgmPlayer = document.getElementById('bgm-player');
+            const bgmToggleButton = document.getElementById('bgm-toggle-btn');
+            const playIcon = document.getElementById('play-icon');
+            const pauseIcon = document.getElementById('pause-icon');
+
+            if (bgmToggleButton && bgmPlayer && playIcon && pauseIcon) {
+                bgmToggleButton.addEventListener('click', function() {
+                    if (bgmPlayer.paused) {
+                        bgmPlayer.play();
+                        playIcon.style.display = 'none';
+                        pauseIcon.style.display = 'block';
+                    } else {
+                        bgmPlayer.pause();
+                        playIcon.style.display = 'block';
+                        pauseIcon.style.display = 'none';
+                    }
+                });
+            }
+
+            // --- Preview Button Logic ---
+            const previewButton = document.getElementById('playPreviewButton');
+            const previewAudio = document.getElementById('sanctionPreviewAudio');
+            const previewDuration = 30; // 
+
+            if (previewButton && previewAudio) {
+                previewButton.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    if (previewAudio.paused) {
+                        previewAudio.currentTime = 0;
+                        previewAudio.play();
+                        previewButton.textContent = 'Playing...';
+                    } else {
+                        previewAudio.pause();
+                        previewButton.textContent = 'Preview Play';
+                    }
+                });
+
+                previewAudio.ontimeupdate = function() {
+                    if (previewAudio.currentTime >= previewDuration) {
+                        previewAudio.pause();
+                    }
+                };
+
+                previewAudio.onended = function() {
+                    previewButton.textContent = 'Preview Play';
+                };
+                
+                previewAudio.onpause = function() {
+                     previewButton.textContent = 'Preview Play';
+                }
+            }
+
+            // --- Music Grid Player Logic ---
+            const audioPlayer = document.getElementById('audio-player');
+            let currentPlayingButton = null;
+
+            document.querySelectorAll('.play-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const songCard = this.closest('.song-card');
+                    const audioSrc = songCard.dataset.audioSrc;
+
+                    if (currentPlayingButton === this) {
+                        audioPlayer.pause();
+                    } else {
+                        if (currentPlayingButton) {
+                           currentPlayingButton.textContent = 'Play';
+                        }
+                        audioPlayer.src = audioSrc;
+                        audioPlayer.play();
+                        this.textContent = 'Pause';
+                        currentPlayingButton = this;
+                    }
+                });
+            });
+
+            audioPlayer.onpause = function() {
+                if (currentPlayingButton) {
+                    currentPlayingButton.textContent = 'Play';
+                    currentPlayingButton = null;
+                }
+            };
+            
+            audioPlayer.onended = function() {
+                if (currentPlayingButton) {
+                    currentPlayingButton.textContent = 'Play';
+                    currentPlayingButton = null;
+                }
+            };
+
+            // --- Hamburger Menu Logic ---
+            const hamburgerMenu = document.getElementById('hamburger-menu');
+            const navLinks = document.getElementById('nav-links');
+
+            if (hamburgerMenu && navLinks) {
+                hamburgerMenu.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    document.body.classList.toggle('no-scroll'); // Add/remove no-scroll class
+                });
+
+                // Close menu when a link is clicked (for smooth scrolling)
+                navLinks.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('active');
+                        document.body.classList.remove('no-scroll'); // Remove no-scroll class
+                    });
+                });
+            }
+
+            // --- Hero Section Carousel Logic ---
+            const heroImages = document.querySelectorAll('.hero-backgrounds img');
+            const heroDots = document.querySelectorAll('.hero-dot');
+            let currentImageIndex = 0;
+            const intervalTime = 4000; // 4 seconds
+            let carouselInterval;
+
+            function showImage(index) {
+                heroImages.forEach((img, i) => {
+                    if (i === index) {
+                        img.classList.add('active');
+                    } else {
+                        img.classList.remove('active');
+                    }
+                });
+                heroDots.forEach((dot, i) => {
+                    if (i === index) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+                currentImageIndex = index;
+            }
+
+            function nextImage() {
+                currentImageIndex = (currentImageIndex + 1) % heroImages.length;
+                showImage(currentImageIndex);
+            }
+
+            // Auto-advance carousel
+            carouselInterval = setInterval(nextImage, intervalTime);
+
+            // Manual navigation with dots
+            heroDots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const index = parseInt(this.dataset.index);
+                    showImage(index);
+                    // Reset auto-advance timer on manual interaction
+                    clearInterval(carouselInterval);
+                    carouselInterval = setInterval(nextImage, intervalTime);
+                });
+            });
+
+            // Initial display
+            showImage(currentImageIndex);
+
+            // --- VIBE CITY Map Logic ---
+            const poiModal = document.getElementById('poi-modal');
+            const modalTitle = document.getElementById('poi-modal-title');
+            const modalDescription = document.getElementById('poi-modal-description');
+            const modalImage = document.getElementById('poi-modal-image');
+            const closeModal = document.querySelector('.poi-modal-close');
+
+            document.querySelectorAll('.poi').forEach(poi => {
+                poi.addEventListener('click', function() {
+                    modalTitle.textContent = this.dataset.title;
+                    modalDescription.textContent = this.dataset.description;
+                    modalImage.src = this.dataset.image;
+                    poiModal.style.display = 'block';
+                });
+            });
+
+            if(closeModal) {
+                closeModal.onclick = function() {
+                    poiModal.style.display = 'none';
+                }
+            }
+
+            window.onclick = function(event) {
+                if (event.target == poiModal) {
+                    poiModal.style.display = 'none';
+                }
+            }
+
+            // --- Blog Modal Logic ---
+            const blogModal = document.getElementById('blog-modal');
+            const blogModalTitle = document.getElementById('blog-modal-title');
+            const blogModalMeta = document.getElementById('blog-modal-meta');
+            const blogModalBody = document.getElementById('blog-modal-body');
+            const closeBlogModal = blogModal.querySelector('.poi-modal-close');
+
+            document.querySelectorAll('.blog-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    blogModalTitle.textContent = this.dataset.title;
+                    blogModalMeta.textContent = this.dataset.meta;
+                    blogModalBody.innerHTML = this.dataset.body;
+                    blogModal.style.display = 'block';
+                });
+            });
+
+            if(closeBlogModal) {
+                closeBlogModal.onclick = function() {
+                    blogModal.style.display = 'none';
+                }
+            }
+
+            window.addEventListener('click', function(event) {
+                if (event.target == blogModal) {
+                    blogModal.style.display = 'none';
+                }
+            });
+
+            // --- Scroll Animation Logic ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.animate-on-scroll').forEach(element => {
+                observer.observe(element);
+            });
+
+            const songCardObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('is-visible');
+                        }, index * 150); // Staggered delay
+                        songCardObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.song-card').forEach(card => {
+                songCardObserver.observe(card);
+            });
+        });
+    </script>
+
+</body>
+</html>
