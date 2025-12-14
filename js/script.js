@@ -427,4 +427,25 @@ document.addEventListener('DOMContentLoaded', function () {
             document.body.style.overflow = 'auto';
         }
     });
+
+    // Artist Card Scroll Effect for Mobile
+    const artistCards = document.querySelectorAll('.artist-card');
+
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                } else {
+                    entry.target.classList.remove('active');
+                }
+            });
+        }, {
+            threshold: 0.5 // 50% visible
+        });
+
+        artistCards.forEach(card => {
+            observer.observe(card);
+        });
+    }
 });
