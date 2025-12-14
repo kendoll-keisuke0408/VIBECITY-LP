@@ -1206,6 +1206,12 @@ footer {
 
 @media (max-width: 768px) {
     .jacket-overlay {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+    }
+
+    .song-card.mobile-active .jacket-overlay {
         opacity: 1;
         background: rgba(0, 0, 0, 0.3);
         pointer-events: auto;

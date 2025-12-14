@@ -448,4 +448,28 @@ document.addEventListener('DOMContentLoaded', function () {
             observer.observe(card);
         });
     }
+
+    // Mobile Song Card Tap Interaction
+    const songCards = document.querySelectorAll('.song-card');
+    songCards.forEach(card => {
+        card.addEventListener('click', function (e) {
+            // スマホサイズのみ有効にする簡易判定
+            if (window.innerWidth <= 768) {
+                // ボタン自体のクリックなら何もしない
+                if (e.target.closest('a') || e.target.closest('button')) {
+                    return;
+                }
+
+                // すでにアクティブなら非アクティブに、そうでなければアクティブに
+                const isActive = this.classList.contains('mobile-active');
+
+                // 他のカードのアクティブを消す（排他制御）
+                songCards.forEach(c => c.classList.remove('mobile-active'));
+
+                if (!isActive) {
+                    this.classList.add('mobile-active');
+                }
+            }
+        });
+    });
 });
