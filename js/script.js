@@ -226,37 +226,64 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Preview Player
-    const previewBtn = document.getElementById('playPreviewButton');
-    const previewAudio = document.getElementById('sanctionPreviewAudio');
+    // Preview Player (Multi-instance support)
+    const previewButtons = document.querySelectorAll('.preview-play-btn');
 
-    if (previewBtn && previewAudio) {
-        previewBtn.addEventListener('click', (e) => {
+    previewButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
             e.preventDefault();
-            if (previewAudio.paused) {
+            const audioId = btn.dataset.audioTarget;
+            const audio = document.getElementById(audioId);
+
+            if (!audio) return;
+
+            // Stop other previews
+            previewButtons.forEach(otherBtn => {
+                if (otherBtn !== btn) {
+                    const otherAudioId = otherBtn.dataset.audioTarget;
+                    const otherAudio = document.getElementById(otherAudioId);
+                    if (otherAudio) {
+                        otherAudio.pause();
+                        otherAudio.currentTime = 0;
+                    }
+                    otherBtn.textContent = 'PREVIEW PLAY';
+                    otherBtn.classList.remove('playing');
+                }
+            });
+
+            if (audio.paused) {
                 // Stop main BGM if playing
-                if (!bgmPlayer.paused) {
-                    bgmPlayer.pause();
-                    playIcon.style.display = 'block';
-                    pauseIcon.style.display = 'none';
+                if (bgmPlayer && !bgmPlayer.paused) {
+                    bgmToggleBtn.click(); // Use click to toggle UI state correctly
                 }
 
-                previewAudio.currentTime = 0;
-                previewAudio.play();
-                previewBtn.textContent = 'STOP PREVIEW';
-                previewBtn.classList.add('playing');
-            } else {
-                previewAudio.pause();
-                previewBtn.textContent = 'PREVIEW PLAY';
-                previewBtn.classList.remove('playing');
-            }
-        });
+                // Stop main grid audio player if playing
+                if (mainAudioPlayer && !mainAudioPlayer.paused) {
+                    mainAudioPlayer.pause();
+                    if (currentPlayBtn) {
+                        currentPlayBtn.textContent = 'PLAY';
+                        currentPlayBtn.classList.remove('active');
+                        currentPlayBtn = null;
+                    }
+                }
 
-        previewAudio.onended = () => {
-            previewBtn.textContent = 'PREVIEW PLAY';
-            previewBtn.classList.remove('playing');
-        };
-    }
+                audio.currentTime = 0;
+                audio.play();
+                btn.textContent = 'STOP PREVIEW';
+                btn.classList.add('playing');
+            } else {
+                audio.pause();
+                btn.textContent = 'PREVIEW PLAY';
+                btn.classList.remove('playing');
+            }
+
+            // Reset on end
+            audio.onended = () => {
+                btn.textContent = 'PREVIEW PLAY';
+                btn.classList.remove('playing');
+            };
+        });
+    });
 
     // Grid Audio Players
     const mainAudioPlayer = document.getElementById('audio-player');
@@ -472,4 +499,117 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
+    // --- Chart Date Logic ---
+    const chartPeriodElement = document.getElementById('chart-period');
+    if (chartPeriodElement) {
+        const today = new Date();
+        const day = today.getDay(); // 0 (Sun) - 6 (Sat)
+
+        // Calculate start of week (Monday)
+        // If today is Sunday (0), go back 6 days. Otherwise go back day-1 days.
+        const diffToMon = day === 0 ? 6 : day - 1;
+        const startOfWeek = new Date(today);
+        startOfWeek.setDate(today.getDate() - diffToMon);
+
+        // Calculate end of week (Sunday)
+        const endOfWeek = new Date(startOfWeek);
+        endOfWeek.setDate(startOfWeek.getDate() + 6);
+
+        // Format Date: YYYY.MM.DD
+        const formatDate = (date) => {
+            const y = date.getFullYear();
+            const m = String(date.getMonth() + 1).padStart(2, '0');
+            const d = String(date.getDate()).padStart(2, '0');
+            return `${y}.${m}.${d}`;
+        };
+
+        chartPeriodElement.textContent = `WEEKLY CHART : ${formatDate(startOfWeek)} - ${formatDate(endOfWeek)}`;
+    }
+
+
+
+    // --- Comment Submission Logic (Local Demo with Persistence) ---
+    const commentsList = document.getElementById('comments-list');
+    const countSpan = document.getElementById('comment-count');
+
+    // Load saved comments
+    const savedComments = JSON.parse(localStorage.getItem('vibeCityComments') || '[]');
+
+    if (commentsList && countSpan) {
+        // Prepend saved comments (reverse order so newest is top)
+        savedComments.forEach(comment => {
+            const newComment = document.createElement('div');
+            newComment.className = 'comment-item';
+            newComment.style.marginBottom = '8px';
+            newComment.style.fontSize = '0.8rem';
+            newComment.innerHTML = `<span style="color: var(--accent-color); font-weight: bold;">${escapeHtml(comment.name)}:</span> <span style="color: #fff;">${escapeHtml(comment.text)}</span>`;
+            commentsList.insertBefore(newComment, commentsList.firstChild);
+        });
+
+        // Update count
+        let currentCount = parseInt(countSpan.textContent);
+        countSpan.textContent = currentCount + savedComments.length;
+    }
+    const submitBtn = document.getElementById('submit-comment');
+    if (submitBtn) {
+        submitBtn.addEventListener('click', () => {
+            const nameInput = document.getElementById('comment-name');
+            const textInput = document.getElementById('comment-text');
+            const commentsList = document.getElementById('comments-list');
+            const countSpan = document.getElementById('comment-count');
+
+            const name = nameInput.value.trim();
+            const text = textInput.value.trim();
+
+            if (name && text) {
+                // Create new comment element
+                const newComment = document.createElement('div');
+                newComment.className = 'comment-item';
+                newComment.style.marginBottom = '8px';
+                newComment.style.fontSize = '0.8rem';
+                newComment.style.animation = 'fadeIn 0.5s ease'; // Simple fade in if CSS supports it, otherwise just appears
+
+                // Add content
+                newComment.innerHTML = `<span style="color: var(--accent-color); font-weight: bold;">${escapeHtml(name)}:</span> <span style="color: #fff;">${escapeHtml(text)}</span>`;
+
+                // Insert at the top
+                commentsList.insertBefore(newComment, commentsList.firstChild);
+
+                // Update count
+                let currentCount = parseInt(countSpan.textContent);
+                countSpan.textContent = currentCount + 1;
+
+                // Save to localStorage
+                const comments = JSON.parse(localStorage.getItem('vibeCityComments') || '[]');
+                comments.push({ name, text });
+                localStorage.setItem('vibeCityComments', JSON.stringify(comments));
+
+                // Clear inputs
+                nameInput.value = '';
+                textInput.value = '';
+
+                // Visual feedback
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'SENT!';
+                submitBtn.style.background = '#4CAF50';
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.style.background = 'var(--accent-color)';
+                }, 2000);
+            } else {
+                alert('Please enter both a name and a comment.');
+            }
+        });
+    }
+
+    // Helper to prevent XSS in demo
+    function escapeHtml(text) {
+        return text
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
 });

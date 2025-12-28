@@ -1,0 +1,295 @@
+/* --- Ranking Section --- */
+.ranking-section {
+    padding: 100px 0;
+    background: linear-gradient(180deg, #000 0%, #0a0a0a 100%);
+    overflow: hidden;
+    /* For glow effects spilling out */
+}
+
+.ranking-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.ranking-item {
+    position: relative;
+    background: rgba(20, 20, 20, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 4px;
+    transition: transform 0.3s ease;
+}
+
+.ranking-item:hover {
+    transform: translateY(-5px);
+}
+
+/* --- Rank 1 Specifics (PREMIUM DESIGN) --- */
+.ranking-item.rank-1 {
+    grid-column: 1 / -1;
+    /* Mobile default */
+    display: flex;
+    gap: 50px;
+    padding: 50px;
+
+    /* Premium Background */
+    background:
+        linear-gradient(135deg, rgba(20, 10, 10, 0.95) 0%, rgba(40, 10, 15, 0.95) 100%),
+        repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 215, 0, 0.03) 10px, rgba(255, 215, 0, 0.03) 20px);
+
+    /* Gradient Border */
+    border: 2px solid transparent;
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+    background-image: linear-gradient(#1a1a1a, #1a1a1a), linear-gradient(135deg, #FFD700, #ff4d4d, #FFD700);
+
+    /* Glow Effect */
+    box-shadow: 0 0 50px rgba(255, 77, 77, 0.2), inset 0 0 100px rgba(0, 0, 0, 0.8);
+    animation: border-pulse 4s infinite linear;
+}
+
+@keyframes border-pulse {
+    0% {
+        box-shadow: 0 0 50px rgba(255, 77, 77, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 80px rgba(255, 77, 77, 0.4);
+    }
+
+    100% {
+        box-shadow: 0 0 50px rgba(255, 77, 77, 0.2);
+    }
+}
+
+/* Rank 1 Badge */
+.rank-1 .rank-badge {
+    position: absolute;
+    top: -25px;
+    left: -25px;
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(45deg, #FFD700, #FFA500, #FFD700);
+    background-size: 200% 200%;
+    animation: gradient-shine 3s ease infinite;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #000;
+    text-shadow: 0 2px 0 rgba(255, 255, 255, 0.5);
+
+    z-index: 10;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 215, 0, 0.6);
+    transform: rotate(-10deg);
+
+    /* Shape */
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+@keyframes gradient-shine {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.rank-1 .rank-badge::after {
+    content: 'No.';
+    position: absolute;
+    top: 15px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Rank 1 Content */
+.rank-1 .ranking-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Rank 1 Jacket */
+.rank-1 .ranking-jacket-container {
+    position: relative;
+    perspective: 1000px;
+}
+
+.rank-1 .ranking-jacket {
+    width: 380px;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    filter: brightness(1.1) contrast(1.1);
+
+    /* 3D Effect */
+    transform: rotateY(10deg) rotateX(5deg);
+}
+
+.ranking-item.rank-1:hover .ranking-jacket {
+    transform: rotateY(0deg) rotateX(0deg) scale(1.05);
+    box-shadow: 0 30px 80px rgba(255, 77, 77, 0.3);
+}
+
+/* Rank 1 Text */
+.rank-1 .new-release-title {
+    font-size: 4rem;
+    background: linear-gradient(90deg, #fff, #ddd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+}
+
+/* --- Other Ranks --- */
+.rank-badge {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #000;
+    z-index: 10;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    transform: rotate(-10deg);
+}
+
+.rank-2 .rank-badge {
+    background: linear-gradient(45deg, #C0C0C0, #E0E0E0);
+}
+
+.rank-3 .rank-badge {
+    background: linear-gradient(45deg, #CD7F32, #E0A070);
+}
+
+.ranking-content {
+    flex: 1;
+}
+
+.ranking-jacket {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    margin-bottom: 20px;
+    filter: grayscale(100%) brightness(0.5);
+    transition: all 0.3s ease;
+}
+
+.ranking-item:hover .ranking-jacket {
+    filter: grayscale(0%) brightness(1);
+}
+
+/* Placeholder Style */
+.ranking-item.placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 400px;
+    opacity: 0.5;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.placeholder-text {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: #555;
+    letter-spacing: 2px;
+    margin-top: 20px;
+}
+
+.placeholder-icon {
+    font-size: 3rem;
+    color: #333;
+}
+
+/* --- Responsive --- */
+@media (min-width: 1024px) {
+    .ranking-grid {
+        grid-template-columns: 1.8fr 1fr 1fr;
+    }
+
+    .ranking-item.rank-1 {
+        grid-column: 1 / 2;
+        grid-row: 1 / 3;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .rank-1 .ranking-jacket {
+        width: 100%;
+        max-width: 450px;
+        height: auto;
+        aspect-ratio: 1/1;
+        margin-bottom: 30px;
+        transform: rotateY(0) rotateX(0);
+        /* Reset 3D for center alignment simplicity */
+    }
+
+    .ranking-item.rank-1:hover .ranking-jacket {
+        transform: scale(1.03);
+    }
+}
+
+@media (max-width: 1023px) {
+    .ranking-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .ranking-item.rank-1 {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .rank-1 .ranking-jacket {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ranking-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ranking-item.rank-1 {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+    }
+
+    .rank-1 .ranking-jacket {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        margin: 0 auto 20px;
+    }
+
+    .rank-1 .new-release-title {
+        font-size: 2.5rem;
+    }
+}

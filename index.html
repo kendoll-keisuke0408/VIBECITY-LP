@@ -22,6 +22,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css?v=14">
     <link rel="stylesheet" href="css/mv.css">
+    <link rel="stylesheet" href="css/ranking.css">
 </head>
 
 <body>
@@ -54,6 +55,7 @@
             <nav>
                 <ul class="nav-links" id="nav-links">
                     <li><a href="#hero">TOP</a></li>
+                    <li><a href="#ranking">CHART</a></li>
                     <li><a href="#new-releases">NEW RELEASES</a></li>
                     <li><a href="#about">ABOUT</a></li>
 
@@ -104,10 +106,93 @@
     </section>
 
     <main>
+        <!-- RANKING SECTION -->
+        <section id="ranking" class="ranking-section">
+            <div class="container">
+                <h2 class="section-title" data-text="VIBE CITY CHART">VIBE CITY CHART</h2>
+                <p id="chart-period"
+                    style="text-align: center; color: var(--accent-color); font-family: var(--font-mono); margin-top: -80px; margin-bottom: 80px; font-size: 1.2rem; letter-spacing: 2px; text-transform: uppercase;">
+                    LOADING DATE...</p>
+                <div class="ranking-grid">
+                    <!-- 1st Place -->
+                    <div class="ranking-item rank-1">
+                        <div class="rank-badge">1</div>
+                        <div class="ranking-jacket-container">
+                            <img src="IMG_8432.jpg" alt="帰還宣言 Jacket" class="ranking-jacket">
+                        </div>
+                        <div class="ranking-content">
+                            <p class="new-release-artist"
+                                style="color: #FFD700; text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); margin-bottom: 10px;">
+                                DJ K`Oberia</p>
+                            <h3 class="new-release-title" style="font-size: 3rem; margin-bottom: 20px;">帰還宣言</h3>
+                            <p class="new-release-description" style="font-size: 0.9rem; margin-bottom: 30px;">
+                                <strong>『帰還宣言』――VIBECITY Music Ranking 初登場1位。</strong><br><br>
+                                <strong>ただの帰省ではない。</strong>沈黙を破り、QueenB＝DJ KO'beria が玉座へ帰ってきた。<br><br>
+                                これは“懐かしさ”の再会じゃない。<br>
+                                偽りの平穏に浸る地元シーンへの宣戦布告だ。<br>
+                                田舎で腑抜けた空気に、遠慮なく火をつける。<br><br>
+                                「私がルールだ」――<br>
+                                その言葉ごと、序列を塗り替える。<br>
+                                帰還は証明。QueenBは今も支配者。
+                            </p>
+                            <div class="new-release-actions">
+                                <a href="#" class="btn btn-primary preview-play-btn"
+                                    data-audio-target="returnAudio">Preview</a>
+                                <a href="https://suno.com/s/FppeONBiflgzymwX" target="_blank" class="btn btn-secondary"
+                                    style="padding: 16px 20px; font-size: 1rem;">Suno</a>
+                            </div>
+                            <audio id="returnAudio" src="帰還宣言.mp3" preload="auto" style="display: none;"></audio>
+                        </div>
+                    </div>
+
+                    <!-- 2nd Place -->
+                    <div class="ranking-item rank-2">
+                        <div class="rank-badge">2</div>
+                        <div class="ranking-jacket-container">
+                            <img src="ChatGPT Image 2025年12月28日 17_59_01.png" alt="ICE DISTANCE Jacket"
+                                class="ranking-jacket">
+                        </div>
+                        <div class="ranking-content">
+                            <p class="new-release-artist" style="margin-bottom: 5px;">SHIN & NEON</p>
+                            <h3 class="new-release-title" style="font-size: 1.8rem; margin-bottom: 10px;">ICE DISTANCE
+                            </h3>
+                            <p class="new-release-description"
+                                style="font-size: 0.8rem; margin-bottom: 20px; line-height: 1.4;">
+                                <strong>feat. DJ K`Oberia</strong><br><br>
+                                ICE Distanceは、18歳のインディーズデュオ SHIN & NEON が、憧れの VIBECITY RECORDS
+                                のオーディションに向けて“配信で送り付けた”一曲。<br>
+                                無名のまま勝負に出たその音源が、まさかの形で DJ KO'beria の耳に届き、共演（フィーチャリング）が実現した。<br><br>
+                                本来なら交わらないはずの距離――<br>
+                                アンダーグラウンドの熱と、VIBECITYの冷たい輝きが重なった瞬間を、そのまま封じた「事件」みたいなトラック。
+                            </p>
+                            <div class="new-release-actions" style="flex-direction: column; gap: 10px;">
+                                <a href="#" class="btn btn-primary preview-play-btn"
+                                    data-audio-target="iceDistanceAudio"
+                                    style="width:100%; text-align:center; padding: 10px;">Preview</a>
+                                <a href="https://suno.com/s/h6DPjRqAmoS3gfY3" target="_blank" class="btn btn-secondary"
+                                    style="width:100%; text-align:center; padding: 10px; font-size: 0.9rem;">Suno</a>
+                            </div>
+                            <audio id="iceDistanceAudio" src="ICE  DISTANCE feat.DJ KO’beria.mp3" preload="auto"
+                                style="display: none;"></audio>
+                        </div>
+                    </div>
+
+                    <!-- 3rd Place Placeholder -->
+                    <div class="ranking-item rank-3 placeholder">
+                        <div class="rank-badge">3</div>
+                        <div class="placeholder-icon">?</div>
+                        <p class="placeholder-text">COMING SOON</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- NEW RELEASES SECTION -->
         <section id="new-releases" class="new-releases-section">
             <div class="container">
                 <h2 class="section-title" data-text="NEW RELEASE">New Release</h2>
+
+                <!-- New Release: Sweetie Crime -->
                 <div class="new-release-card">
                     <div class="new-release-jacket">
                         <img src="D473DEED-C637-4943-800C-582C49F7D972 (2).png" alt="Sweetie Crime Jacket">
@@ -120,7 +205,8 @@
                             VIBECITYの夜で“可愛いだけじゃ生き残れない”現実を、そのまま音にしたKO‘beria。表向きは甘くて色っぽいのに、心の中は冷めていて、優しさを信じるほどもう余裕がない。だから、甘い顔で近づいても心は渡さず、壊される前に自分のルールで相手を裁く側に立つ。<br><br>この曲は「夜は楽しいよ」って話じゃなくて、夜で削れた心を守るために強くなるしかなかったっていう告白。
                         </p>
                         <div class="new-release-actions">
-                            <a href="#" class="btn btn-primary" id="playPreviewButton">Preview Play</a>
+                            <a href="#" class="btn btn-primary preview-play-btn"
+                                data-audio-target="sanctionPreviewAudio">Preview Play</a>
                             <a href="https://suno.com/s/wB860EJO1D7tDSFc" target="_blank" class="btn btn-secondary"
                                 style="width: 100%; text-align: center;">Listen Full on SUNO</a>
                         </div>
@@ -464,6 +550,198 @@
 
             <!-- Blog List -->
             <div class="blog-sidebar-list">
+
+                <!-- New Blog Item: Diss Track News -->
+                <div class="blog-sidebar-item"
+                    style="border-left: 4px solid var(--accent-color); background: rgba(255, 0, 0, 0.05);">
+                    <div class="blog-sidebar-header">
+                        <span class="blog-category" style="color: #ff4d4d;">BREAKING NEWS</span>
+                        <span class="blog-date">2025.12.28</span>
+                    </div>
+                    <img src="IMG_8429.PNG" alt="Diss Track Visual"
+                        style="width: 100%; border-radius: 4px; margin-bottom: 15px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <h3 class="blog-sidebar-title" style="font-size: 1.4rem; color: #fff;">RAP界に激震が走る──DJ
+                        KO‘beria、ミヨシドックスへ痛烈ディス投下</h3>
+                    <p class="blog-sidebar-excerpt" style="color: #ddd; line-height: 1.8;">
+                        RAP界に激震が走る。<br>
+                        DJ KO‘beria（コウベリア）が、ミヨシドックスに向けたディスソングを発表した。<br>
+                        これは会話じゃない。独白のまま押し潰す“進撃”。<br>
+                        言葉が止まらない。息継ぎがない。逃げ道がない。<br>
+                        VIBE CITYの空気が、曲ひとつで塗り替えられた。
+                    </p>
+                    <div class="blog-interactions">
+                        <button class="like-btn"><span class="icon">♥</span> <span class="count">342</span></button>
+                        <button class="comment-btn"><span class="icon">💬</span> <span class="count">30</span></button>
+                    </div>
+
+                    <!-- Comments Section -->
+                    <div class="blog-comments-container"
+                        style="margin-top: 15px; background: rgba(0,0,0,0.3); padding: 15px; border-radius: 4px; max-height: 200px; overflow-y: auto; border: 1px solid rgba(255,255,255,0.05);">
+                        <h4
+                            style="font-size: 0.8rem; color: #aaa; margin-bottom: 10px; border-bottom: 1px solid #333; padding-bottom: 5px;">
+                            COMMENTS (<span id="comment-count">30</span>)</h4>
+
+                        <!-- Comment Form -->
+                        <div class="comment-form"
+                            style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; gap: 5px;">
+                            <input type="text" id="comment-name" placeholder="Name"
+                                style="width: 30%; background: rgba(0,0,0,0.5); border: 1px solid #555; color: #fff; padding: 5px; border-radius: 4px; font-size: 0.8rem;">
+                            <input type="text" id="comment-text" placeholder="Write a comment..."
+                                style="flex: 1; background: rgba(0,0,0,0.5); border: 1px solid #555; color: #fff; padding: 5px; border-radius: 4px; font-size: 0.8rem;">
+                            <button id="submit-comment"
+                                style="background: var(--accent-color); color: #fff; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight: bold;">SEND</button>
+                        </div>
+
+                        <div id="comments-list">
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: var(--accent-color); font-weight: bold;">VIBE_Rat:</span> <span
+                                    style="color: #ccc;">やばすぎw トラック重すぎ</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: #888; font-weight: bold;">NeonBoy:</span> <span
+                                    style="color: #ccc;">MIYOSHIDOGGSって誰？聞いたことない</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: #888; font-weight: bold;">K-Stan:</span> <span
+                                    style="color: #ccc;">Queen is back!!! おかえりなさい</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: #888; font-weight: bold;">CyberPunk99:</span> <span
+                                    style="color: #ccc;">完全に殺しに来てるな。逃げ道なし。</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: #888; font-weight: bold;">Ghetto_Cat:</span> <span
+                                    style="color: #ccc;">ミヨシドックス...何したんだよw</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: var(--accent-color); font-weight: bold;">Faithful:</span> <span
+                                    style="color: #ccc;">コウベリア様一生ついていきます！！</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: #888; font-weight: bold;">Anon_X:</span> <span
+                                    style="color: #ccc;">VIBE
+                                    CITYの王は一人だけ。証明完了。</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: #888; font-weight: bold;">BassHead:</span> <span
+                                    style="color: #ccc;">鳥肌立った。リリックが鋭利すぎる。</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: #888; font-weight: bold;">LostSoul:</span> <span
+                                    style="color: #ccc;">Who is Miyoshi Doggs? Is he famous?</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: #888; font-weight: bold;">CityWalker:</span> <span
+                                    style="color: #ccc;">ミヨシドックス逃げてーw 相手が悪すぎる</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: #888; font-weight: bold;">RapperWannabe:</span> <span
+                                    style="color: #ccc;">ラップスキル上がりすぎでしょ...次元が違う</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: #888; font-weight: bold;">NewsHunter:</span> <span
+                                    style="color: #ccc;">これは事件だわ。街の空気が変わった。</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: #888; font-weight: bold;">DogLover:</span> <span
+                                    style="color: #ccc;">謎の勢力ミヨシドックス、名前だけ有名になりそうw</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: var(--accent-color); font-weight: bold;">QueenGuard:</span> <span
+                                    style="color: #ccc;">K'Oberiaしか勝たん。他は雑音。</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: #888; font-weight: bold;">BeatMaker:</span> <span
+                                    style="color: #ccc;">イントロから優勝。ベースの鳴りがエグい。</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: #888; font-weight: bold;">MysteryMan:</span> <span
+                                    style="color: #ccc;">ミヨシドックスってあの...いや、まさかな。</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: #888; font-weight: bold;">VibeCitizen:</span> <span
+                                    style="color: #ccc;">VIBE CITY震えてる。マジで怖い。</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: #888; font-weight: bold;">GodEar:</span> <span
+                                    style="color: #ccc;">神。それ以外の言葉が見つからない。</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: #888; font-weight: bold;">RipMiyoshi:</span> <span
+                                    style="color: #ccc;">Miyoshi Doggs RIP. 安らかに眠れ。</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: #888; font-weight: bold;">HistoryWitness:</span> <span
+                                    style="color: #ccc;">このビーフは歴史に残るぞ。</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: var(--accent-color); font-weight: bold;">RoyalBlood:</span> <span
+                                    style="color: #ccc;">女王の帰還。ひれ伏す準備はできてる。</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: #888; font-weight: bold;">Waiter:</span> <span
+                                    style="color: #ccc;">ミヨシドックスのアンサー待機...できるのか？</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: #888; font-weight: bold;">Realist:</span> <span
+                                    style="color: #ccc;">いや、アンサー返せないでしょこれ。格が違いすぎる。</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: #888; font-weight: bold;">Dominator:</span> <span
+                                    style="color: #ccc;">圧倒的支配力。これがVIBE CITYのルール。</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: #888; font-weight: bold;">DailyListener:</span> <span
+                                    style="color: #ccc;">毎日聴くわ。中毒性やばい。</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: #888; font-weight: bold;">Investigator:</span> <span
+                                    style="color: #ccc;">ミヨシドックスの正体特定班、出動せよ。</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: #888; font-weight: bold;">MaxVolume:</span> <span
+                                    style="color: #ccc;">最高最高最高！！！</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: var(--accent-color); font-weight: bold;">LoveK:</span> <span
+                                    style="color: #ccc;">We love K'Oberia <3 かっこよすぎ！</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: #888; font-weight: bold;">Shadow:</span> <span
+                                    style="color: #ccc;">闇が深まるな...面白くなってきた。</span>
+                            </div>
+                            <div class="comment-item" style="margin-bottom: 8px; font-size: 0.8rem;">
+                                <span style="color: #888; font-weight: bold;">LastMan:</span> <span
+                                    style="color: #ccc;">勝負あり。</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- New Blog Item: Blue Furnace Debut -->
+                <div class="blog-sidebar-item"
+                    style="border-left: 4px solid #00BFFF; background: rgba(0, 191, 255, 0.05);">
+                    <div class="blog-sidebar-header">
+                        <span class="blog-category" style="color: #00BFFF;">NEW COMER</span>
+                        <span class="blog-date">2025.12.10</span>
+                    </div>
+                    <img src="IMG_8345.PNG" alt="Blue Furnace Visual"
+                        style="width: 100%; border-radius: 4px; margin-bottom: 15px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <h3 class="blog-sidebar-title" style="font-size: 1.4rem; color: #fff;">Blue
+                        Furnace（ブルー・ファーネス）、2026年デビュー決定。</h3>
+                    <p class="blog-sidebar-excerpt" style="color: #ddd; line-height: 1.8;">
+                        <strong>Blue Furnace（ブルー・ファーネス）</strong>が、2026年にVIBECITYRECORDSからデビュー予定。<br>
+                        冷たさと熱量が同居する名前の通り、静かに燃える“青い炉”みたいな気配をまとったクルーが動き出す。<br><br>
+                        そして何より注目なのは、<strong>DJ TENKASUプロデュース</strong>のクルーだということ。<br>
+                        音も見せ方も、ただの新人枠じゃない。初動から「仕上がってる」と言われるタイプで、出てきた瞬間に空気を持っていく危険な匂いがある。<br><br>
+                        まだ多くは語らない。<br>
+                        でもこれは、<strong>2026年のシーンに刺さる“名前”</strong>になる。<br>
+                        Blue Furnace――要チェック。
+                    </p>
+                    <div class="blog-interactions">
+                        <button class="like-btn"><span class="icon">♥</span> <span class="count">156</span></button>
+                        <button class="comment-btn"><span class="icon">💬</span> Comment</button>
+                    </div>
+                </div>
                 <!-- Blog Item 1 -->
                 <div class="blog-sidebar-item">
                     <div class="blog-sidebar-header">
